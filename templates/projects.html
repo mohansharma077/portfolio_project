@@ -1,0 +1,374 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Professional Projects Portfolio{% endblock %}
+
+{% block extra_css %}
+<style>
+    .projects-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+    }
+
+    .project-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        overflow: hidden;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .project-image {
+        height: 220px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.6);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-category {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #4f46e5;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 0.75rem;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+        color: #4b5563;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+    }
+
+    .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .project-tag {
+        background: #f3f4f6;
+        color: #374151;
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+    }
+
+    .btn-demo {
+        background: #4f46e5;
+        color: white;
+        padding: 0.6rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: background 0.3s ease;
+    }
+
+    .btn-demo:hover {
+        background: #4338ca;
+    }
+
+    .btn-code {
+        background: #e0e7ff;
+        color: #4f46e5;
+        padding: 0.6rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-code:hover {
+        background: #c7d2fe;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="projects-container">
+    <h2 class="section-heading">Professional Projects Showcase</h2>
+    <p class="section-subheading">12 Industry-Relevant Implementations</p>
+
+    <div class="project-grid">
+        <!-- Project 1: Banking -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/banking-ai.jpg' %});">
+                <div class="project-overlay">
+                    <button class="btn-demo">Live Demo</button>
+                    <a href="https://github.com/mohansharma077/Loan-Repayment-Prediction" class="btn-code">View Code</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Banking AI</span>
+                <h3 class="project-title">Smart Credit Approval System</h3>
+                <p class="project-description">ML-powered credit risk assessment with automated decision-making and regulatory compliance features.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Machine Learning</span>
+                    <span class="project-tag">Risk Analysis</span>
+                    <span class="project-tag">Python</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: Finance -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/fraud-detection.jpg' %});">
+                <div class="project-overlay">
+                    <button class="btn-demo">Live Demo</button>
+                    <a href="https://github.com/mohansharma077/-Fraud-Detection-On-Credit-Card-Transactions" class="btn-code">View Code</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Financial Security</span>
+                <h3 class="project-title">Real-time Fraud Detection</h3>
+                <p class="project-description">Transaction monitoring system using anomaly detection algorithms.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Neural Networks</span>
+                    <span class="project-tag">Big Data</span>
+                    <span class="project-tag">Apache Spark</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3: Insurance -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/insurance-ai.jpg' %});">
+                <div class="project-overlay">
+                    <a href="https://github.com/mohansharma077/Bank-Failure-Prediction/tree/main" class="btn-demo">View Code </a>
+                    <button class="btn-code">White Paper</button>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Insurance Tech</span>
+                <h3 class="project-title">Automated Claims Processing</h3>
+                <p class="project-description">Computer vision system for damage assessment and claim validation.</p>
+                <div class="project-tags">
+                    <span class="project-tag">CV</span>
+                    <span class="project-tag">NLP</span>
+                    <span class="project-tag">AWS</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4: Recommendation -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/fashion-ai.jpg' %});">
+                <div class="project-overlay">
+                    <a href="https://github.com/mohansharma077?tab=repositories" class="btn-demo">Demo</a>
+                    <button class="btn-code">API Docs</button>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Retail AI</span>
+                <h3 class="project-title">Fashion Recommendation Engine</h3>
+                <p class="project-description">Deep learning system with visual search capabilities.</p>
+                <div class="project-tags">
+                    <span class="project-tag">PyTorch</span>
+                    <span class="project-tag">Computer Vision</span>
+                    <span class="project-tag">E-commerce</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 5: Healthcare -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/medical-ai.jpg' %});">
+                <div class="project-overlay">
+                    <a href="https://github.com/mohansharma077/Brain-Tumor-Detection-using-Deep-Learning" class="btn-demo">Research</a>
+                    <button class="btn-code">Dataset</button>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Healthcare AI</span>
+                <h3 class="project-title">Brain Tumor Detection</h3>
+                <p class="project-description">Predictive analytics using 50+ medical parameters.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Biomedical</span>
+                    <span class="project-tag">XGBoost</span>
+                    <span class="project-tag">Python</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 6: Banking -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/loan-system.jpg' %});">
+                <div class="project-overlay">
+                    <button class="btn-demo">Simulator</button>
+                    <a href="https://github.com/mohansharma077/Survival-Analysis-of-Customers" class="btn-code">Code</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Banking Tech</span>
+                <h3 class="project-title">Loan Default Prediction</h3>
+                <p class="project-description">Time-series analysis of repayment patterns.</p>
+                <div class="project-tags">
+                    <span class="project-tag">LSTM</span>
+                    <span class="project-tag">Risk Modeling</span>
+                    <span class="project-tag">Python</span>
+                </div>
+            </div>
+        </div>
+
+                <!-- Project 7: Entertainment -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/movie-ai.jpg' %});">
+                <div class="project-overlay">
+                    <button class="btn-demo">Try Demo</button>
+                    <a href="https://github.com/mohansharma077/Movie-Recommender-System" class="btn-code">Algorithm</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Entertainment AI</span>
+                <h3 class="project-title">Movie Recommendation System</h3>
+                <p class="project-description">Hybrid recommender combining collaborative filtering and content-based approaches.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Neural Networks</span>
+                    <span class="project-tag">Python</span>
+                    <span class="project-tag">TensorFlow</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 8: Finance -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/stock-ai.jpg' %});">
+                <div class="project-overlay">
+                    <a href="https://github.com/mohansharma077/Stock-Price-Prediction" class="btn-demo">Predictions</a>
+                    <button class="btn-code">Model</button>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Financial Markets</span>
+                <h3 class="project-title">Stock Price Forecasting</h3>
+                <p class="project-description">LSTM-based prediction system with sentiment analysis integration.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Time Series</span>
+                    <span class="project-tag">Keras</span>
+                    <span class="project-tag">NLP</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 9: Communication -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/chat-app.jpg' %});">
+                <div class="project-overlay">
+                    <a href="https://github.com/mohansharma077/Chat-Applcation-FlaskSocketIO" class="btn-demo">Live Chat</a>
+                    <button class="btn-code">API</button>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Real-Time Systems</span>
+                <h3 class="project-title">Secure Chat Application</h3>
+                <p class="project-description">End-to-end encrypted messaging platform with file sharing.</p>
+                <div class="project-tags">
+                    <span class="project-tag">WebSockets</span>
+                    <span class="project-tag">Node.js</span>
+                    <span class="project-tag">React</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 10: Education -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/elearning.jpg' %});">
+                <div class="project-overlay">
+                    <button class="btn-demo">Platform</button>
+                    <a href="https://github.com/mohansharma077/Online-Learning-System--Akshara-Academy" class="btn-code">CMS</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">EdTech</span>
+                <h3 class="project-title">Online Learning System</h3>
+                <p class="project-description">Full-featured LMS with course builder and progress tracking.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Django</span>
+                    <span class="project-tag">MongoDB</span>
+                    <span class="project-tag">SCORM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 11: Automotive -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/auto-insurance.jpg' %});">
+                <div class="project-overlay">
+                    <button class="btn-demo">Calculator</button>
+                    <a href="https://github.com/mohansharma077/Used-Car-Price-prediction-" class="btn-code">API</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Insurance Tech</span>
+                <h3 class="project-title">Vehicle Insurance Assessment</h3>
+                <p class="project-description">Damage evaluation system using computer vision.</p>
+                <div class="project-tags">
+                    <span class="project-tag">OpenCV</span>
+                    <span class="project-tag">ML</span>
+                    <span class="project-tag">Flask</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 12: Analytics -->
+        <div class="project-card">
+            <div class="project-image" style="background-image: url({% static 'img/ceo-analytics.jpg' %});">
+                <div class="project-overlay">
+                    <button class="btn-demo">Dashboard</button>
+                    <a href="https://github.com/mohansharma077/Exploratory-Data-Analysis---Retail" class="btn-code">Analysis</a>
+                </div>
+            </div>
+            <div class="project-content">
+                <span class="project-category">Business Intelligence</span>
+                <h3 class="project-title">Executive Compensation Analysis</h3>
+                <p class="project-description">Corporate leadership analytics with benchmarking.</p>
+                <div class="project-tags">
+                    <span class="project-tag">Tableau</span>
+                    <span class="project-tag">Big Data</span>
+                    <span class="project-tag">Python</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

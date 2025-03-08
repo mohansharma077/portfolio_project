@@ -1,0 +1,520 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Django Portfolio - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title fade-in-up">Hi, I'm <span class="text-gradient">Mohan Sharma</span></h1>
+            <p class="hero-subtitle fade-in-up">Machine Learning Engineer</p>
+            <p class="hero-description fade-in-up">I build modern web applications with Django, React, and other cutting-edge technologies powered by AI</p>
+            <div class="hero-buttons fade-in-up">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-image fade-in-up">
+            <img src="{% static 'images/hero-image.jpeg' %}" alt="Mohan Sharma - Developer" class="rounded-image">
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="container">
+        <h2 class="section-title fade-in-up">About Me</h2>
+        
+        <div class="about-container">
+            
+            
+            <div class="about-content animate-on-scroll">
+                <h3 class="about-subtitle">Who I Am</h3>
+                <p>I'm a passionate full-stack developer with over 3 years of experience building web applications. I specialize in Django, Python, JavaScript, and React, with a strong focus on creating clean, efficient, and user-friendly solutions.</p>
+                
+                <h3 class="about-subtitle">My Journey</h3>
+                <p>My journey in web development began during my computer science studies, where I discovered my passion for creating digital experiences. Since then, I've worked with startups and established companies to deliver high-quality web applications.</p>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Projects Completed</span>
+                    </div>
+                   
+                </div>
+                
+                <h3 class="about-subtitle">My Skills</h3>
+                <div class="skills-container">
+                    <div class="skill-group">
+                        <h4 class="skill-group-title">Frontend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-group">
+                        <h4 class="skill-group-title">Backend</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Django REST</span>
+                            <span class="skill-tag">Machine Learning</span>
+                            <span class="skill-tag">Deep Learning</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-group">
+                        <h4 class="skill-group-title">Tools & Others</h4>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Heroku</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Agile</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-cta">
+                    <a href="{% static 'files/CV Mohan Sharma 2025.pdf' %}" class="btn btn-primary" target="_blank">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+    
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2 class="section-title fade-in-up">Contact Me</h2>
+        <p class="text-center mb-5 fade-in-up">Get in touch with me for inquiries, collaborations, or just to say hello.</p>
+        
+        <div class="contact-container stagger-children">
+            <div class="contact-form-wrapper">
+                <div class="contact-form-header">
+                    <h3 class="contact-form-title">Send a Message</h3>
+                    <p class="contact-form-subtitle">Fill out the form below to get in touch with me.</p>
+                </div>
+                
+                <div class="contact-form">
+                    {% if success %}
+                    <div class="alert alert-success">
+                        <div class="alert-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <div class="alert-content">
+                            <h3 class="alert-title">Success!</h3>
+                            <p>{{ message }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <form method="post" action="{% url 'contact' %}" class="contact-form">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name" class="form-label required">Name</label>
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label required">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Your email address" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="What is this regarding?">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label required">Message</label>
+                            <textarea id="message" name="message" rows="5" class="form-control" placeholder="Your message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="contact-info">
+                <h3 class="contact-info-title">Contact Information</h3>
+                
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="contact-info-content">
+                        <h4 class="contact-info-label">Email</h4>
+                        <p class="contact-info-text">ms4157801@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <div class="contact-info-content">
+                        <h4 class="contact-info-label">Phone</h4>
+                        <p class="contact-info-text">+9779864450538</p>
+                    </div>
+                </div>
+                
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                    </div>
+                    <div class="contact-info-content">
+                        <h4 class="contact-info-label">Location</h4>
+                        <p class="contact-info-text">Kathmandu, Nepal</p>
+                    </div>
+                </div>
+                
+                <div class="contact-social">
+                    <h4 class="contact-social-title">Connect with me</h4>
+                    <div class="contact-social-links">
+                        <a href="https://github.com/mohansharma077" class="contact-social-link" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="contact-social-link" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect x="2" y="9" width="4" height="12"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="#" class="contact-social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    /* Hero Section */
+    .hero-section {
+        padding: var(--spacing-3xl) 0;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, var(--primary-light), transparent 70%);
+        opacity: 0.3;
+        z-index: -1;
+    }
+    
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, var(--secondary-light), transparent 70%);
+        opacity: 0.3;
+        z-index: -1;
+    }
+    
+    .hero-section .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+    }
+    
+    @media (min-width: 768px) {
+        .hero-section .container {
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+    }
+    
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    @media (min-width: 768px) {
+        .hero-title {
+            font-size: 3.5rem;
+        }
+    }
+    
+    .text-gradient {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--gray-dark);
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero-description {
+        font-size: 1.125rem;
+        color: var(--gray);
+        margin-bottom: var(--spacing-xl);
+        max-width: 500px;
+    }
+    
+    .hero-buttons {
+        display: flex;
+        gap: var(--spacing-md);
+        margin-top: var(--spacing-md);
+    }
+    
+    .hero-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .hero-image img {
+        max-width: 100%;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .rounded-image {
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    /* About Section */
+    .about-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--light);
+    }
+    
+    .about-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        margin-top: var(--spacing-2xl);
+    }
+    
+    @media (min-width: 768px) {
+        .about-container {
+            grid-template-columns: 1fr 2fr;
+            align-items: start;
+        }
+    }
+    
+    .about-image img {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    .about-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        color: var(--primary);
+    }
+    
+    .about-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: var(--spacing-md);
+        margin: var(--spacing-lg) 0;
+    }
+    
+    .stat-item {
+        text-align: center;
+        padding: var(--spacing-md);
+        background-color: white;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .stat-number {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    .stat-label {
+        font-size: 0.875rem;
+        color: var(--gray);
+    }
+    
+    .skills-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    .skill-group-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        color: var(--gray-dark);
+    }
+    
+    .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+    
+    .skill-tag {
+        background-color: white;
+        color: var(--gray-dark);
+        font-size: 0.875rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-full);
+        box-shadow: var(--shadow-sm);
+    }
+    
+    .about-cta {
+        margin-top: var(--spacing-xl);
+    }
+    
+    /* Projects Section */
+    .projects-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: white;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+        padding: var(--spacing-3xl) 0;
+        background-color: var(--light);
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for header height
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Project filtering
+        const filterButtons = document.querySelectorAll('.project-filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                // Filter projects
+                projectItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.style.display = 'block';
+                    } else {
+                        const categories = item.getAttribute('data-categories').split(',');
+                        if (categories.includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // Animation on scroll
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+        
+        function checkIfInView() {
+            animateElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkIfInView);
+        checkIfInView(); // Check on page load
+    });
+</script>
+{% endblock %}
+
